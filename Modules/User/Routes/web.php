@@ -11,6 +11,11 @@
 |
 */
 
+Auth::routes();
+
 Route::prefix('user')->group(function() {
     Route::get('/', 'UserController@index');
+    Route::get('/create', 'UserController@create');
+    Route::get('/show', 'UserController@show');
 });
+

@@ -47,6 +47,7 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         $request = $request->all();
+        return $request;
         $request['user_id'] = Auth::user()->id;
         $this->movieRepository->store($request);
 

@@ -15,9 +15,12 @@
                         </div>
                     @endif
 
+                    @if($movies)
+                    @endIf
+
 
                     <div>
-                    @foreach($movies as $movie)
+                    @forelse($movies as $movie)
                         <div class="col-md-12">
                             <div class="card flex-md-row mb-4 shadow-sm h-md-250">
                                 <div class="card-body d-flex flex-column align-items-start">
@@ -33,7 +36,17 @@
                                 </div>
                             </div>
                         </div>
-                    @endForeach  
+
+                        @empty
+                        <div class="col-md-12">
+                            <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                                <div class="card-body d-flex flex-column align-items-start">
+                                    <h3>No movies added yet!</h3>
+                                    <a href="{{route('show_form_movie')}}">click here to add a movie</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforelse  
                 </div>
             </div>
         </div>

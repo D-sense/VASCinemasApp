@@ -12,5 +12,7 @@
 */
 
 Route::prefix('cinema')->group(function() {
-    Route::get('/', 'CinemaController@index');
+    Route::get('/', 'CinemaController@index')->name('show_all_cinemas');
+    Route::get('/show/{name}', 'CinemaController@show')->name('show_cinema');
 });
+

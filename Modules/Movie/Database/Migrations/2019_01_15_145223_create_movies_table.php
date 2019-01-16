@@ -22,7 +22,8 @@ class CreateMoviesTable extends Migration
             $table->string('director_name');
             $table->longText('image');
             $table->longText('description');
-            $table->integer('user_id');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

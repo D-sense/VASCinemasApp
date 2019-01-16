@@ -11,4 +11,9 @@ class Movie extends Model
         'country', 'director', 'image', 'description', 
         'user_id',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 }

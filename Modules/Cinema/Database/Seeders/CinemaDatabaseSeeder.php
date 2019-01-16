@@ -4,6 +4,9 @@ namespace Modules\Cinema\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Cinema\Entities\Cinema;
+use Illuminate\Support\Facades\DB;
+
 
 class CinemaDatabaseSeeder extends Seeder
 {
@@ -14,8 +17,10 @@ class CinemaDatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //$cinema = factory(Cinema::class, 1)->create();
         Model::unguard();
-
-        // $this->call("OthersTableSeeder");
+        $this->call(SeedCinemasTableSeeder::class);
     }
+
+    
 }

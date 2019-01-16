@@ -1,5 +1,7 @@
 <?php
 
 return [
-    'name' => 'Movie'
+    'name' => 'Movie',
 ];
+
+

@@ -10,7 +10,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Modules\\Movie\\Providers\\MovieServiceProvider"
+                "Modules\\Movie\\Providers\\MoviesServiceProvider"
             ],
             "aliases": {
                 

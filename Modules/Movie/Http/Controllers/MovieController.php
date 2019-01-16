@@ -5,16 +5,29 @@ namespace Modules\Movie\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Auth;
+
+use Modules\Movie\Repositories\MoviesRepositoryInterface;
 
 class MovieController extends Controller
 {
+   protected $movieRepository;
+
+   public function __construct(MoviesRepositoryInterface $movieRepository)
+   {
+      $this->middleware('auth');
+      $this->movieRepository = $movieRepository;
+   }
+
+
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        return view('movie::index');
+        $movies = $this->movieRepository->index();
+        return view('movie::index', compact('movies'));
     }
 
     /**
@@ -33,40 +46,20 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+        $request = $request->all();
+        $request['user_id'] = Auth::user()->id;
+        $this->movieRepository->store($request);
+
+        return redirect(route('show_all_movies'));
     }
 
     /**
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('movie::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function edit()
-    {
-        return view('movie::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function update(Request $request)
-    {
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @return Response
-     */
-    public function destroy()
-    {
+        $movie = $this->movieRepository->show($id);
+        return view('movie::show', compact('movie'));
     }
 }

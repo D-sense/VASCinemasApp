@@ -13,9 +13,10 @@
 
 Auth::routes();
 
+Route::get('/', 'UserController@index')->name('home');
+
 Route::prefix('user')->group(function() {
-    Route::get('/', 'UserController@index');
-    Route::get('/create', 'UserController@create');
+    Route::get('/', 'UserController@index')->name('show_users');
     Route::get('/show', 'UserController@show');
 });
 

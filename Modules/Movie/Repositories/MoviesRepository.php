@@ -8,7 +8,7 @@ use Modules\Showtime\Repositories\ShowtimesRepository;
 
 class MoviesRepository implements MoviesRepositoryInterface {
 	
-	 /**
+	/**
      * Display a listing of the resource.
      * @return Collection
      */
@@ -18,18 +18,17 @@ class MoviesRepository implements MoviesRepositoryInterface {
 			return Movie::all();
 
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
 		}
 	}
 	
-
 	/**
      * Store a newly created resource in storage.
      * @param  Request $data
      */
 	public function store(array $data)
 	{
-		try{
+		try{			
 			$movie = new Movie();
 			$image = request()->file('image');
 		
@@ -64,11 +63,11 @@ class MoviesRepository implements MoviesRepositoryInterface {
 			$showtime->store($showtimes_data);
 
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
 		}
 	}
 
-	 /**
+	/**
      * Get a listing of the resource.
 	 * @param integer $id
      * @return $showtime
@@ -79,9 +78,10 @@ class MoviesRepository implements MoviesRepositoryInterface {
 			return Movie::findOrFail($id);
 
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
 		}
 	}
+
 
 	/**
      * Upload an image to the Database.
@@ -100,7 +100,8 @@ class MoviesRepository implements MoviesRepositoryInterface {
 			return $path; 
 
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
 		}
-    }
+	}
+
 }

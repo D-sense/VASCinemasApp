@@ -14,10 +14,19 @@ class CinemasRepository implements CinemasRepositoryInterface {
      */
 	public function show($name)
 	{
-		$id = $this->getID($name);
-		$showtime = Showtime::where('cinema_id', $id)->get();
-		$showtime->load('movie');
-		return $showtime;
+		try{
+			$id = (int) $this->getID($name);
+			//return $id;
+			$showtime = Showtime::where('cinema_id', $id)->get();
+			if(!$showtime){
+				return 0;
+			}
+			//$showtime->load('movie');
+			return $showtime;
+
+        }catch(\Exception $error){
+            return $error;
+		}
 	}
 
 	/**
@@ -25,8 +34,13 @@ class CinemasRepository implements CinemasRepositoryInterface {
      * @return $result->id
      */
 	private function getID($name){
-		$result = Cinema::where('name', $name)->first();
-		return $result->id;
+		try{
+			$result = Cinema::where('name', $name)->first();
+		    return $result->id;
+
+        }catch(\Exception $error){
+            return $error;
+		}
 	}
 
 }

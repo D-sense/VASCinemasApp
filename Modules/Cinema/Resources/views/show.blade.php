@@ -6,7 +6,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{Custom::getCinemaName($cinema[0]->cinema_id)}} Cinema </div>
+                <div class="card-header">
+                   @if(!isset($data)) 
+                     {{Custom::getCinemaName($cinema[0]->cinema_id)}} Cinema 
+                   @endif 
+                   
+        
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -17,7 +23,8 @@
 
             
                     <div>
-                    @forelse($cinema as $showtime)
+                    @if(!isset($data))
+                       @foreach($cinema as $showtime)
                         <div class="col-md-12">
                             <div class="card flex-md-row mb-4 shadow-sm h-md-250">
                                 <div class="card-body d-flex flex-column align-items-start">
@@ -50,17 +57,17 @@
                                 </div>
                             </div>
                         </div>
-
-                        @empty
+                       @endforeach  
+                    @else
                         <div class="col-md-12">
                             <div class="card flex-md-row mb-4 shadow-sm h-md-250">
                                 <div class="card-body d-flex flex-column align-items-start">
-                                    <h3>No movies added yet!</h3>
+                                    <h3>No movies added to this Cinema yet!</h3>
                                     <a href="{{route('show_form_movie')}}">click here to add a movie</a>
                                 </div>
                             </div>
                         </div>
-                    @endforelse  
+                    @endif    
                 </div>
             </div>
         </div>

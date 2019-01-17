@@ -27,7 +27,7 @@ class UserController extends Controller
         try{
             return view('user::home');
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
         }
     }
 
@@ -40,7 +40,7 @@ class UserController extends Controller
         try{
             return view('user::create');
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
         }
     }
 
@@ -63,7 +63,7 @@ class UserController extends Controller
             return view('user::show');
 
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
         }
     }
 

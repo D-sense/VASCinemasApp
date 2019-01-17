@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Welcome To VSC Cinema Dashboard</div>
+                <div class="card-header">Welcome to VASCON Cinema Application Demo</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,10 +14,8 @@
                         </div>
                     @endif
 
-                    You have added ...... movies so far!
-                    <button type="button" class="btn btn-primary">
-                        Notifications <span class="badge badge-light">4</span>
-                    </button>
+                    <h4>Kindly, make use of the navbar links to navigate around</h4>
+                    <strong>Developed: Adeshina Hammed H. </strong>
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@
                             <label for="title" class="col-md-3 col-form-label text-md-left">{{ __('Title of Movie') }}</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title') }}"  autofocus>
+                                <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title') }}" required autofocus>
 
                                 @if ($errors->has('title'))
                                     <span class="invalid-feedback" role="alert">
@@ -38,7 +38,7 @@
                             <label for="length" class="col-md-3 col-form-label text-md-left">{{ __('Length') }}</label>
 
                             <div class="col-md-6">
-                                <input id="length" type="text" class="form-control{{ $errors->has('length') ? ' is-invalid' : '' }}" name="length" value="{{ old('length') }}"  autofocus>
+                                <input id="length" type="text" class="form-control{{ $errors->has('length') ? ' is-invalid' : '' }}" name="length" value="{{ old('length') }}" required autofocus>
 
                                 @if ($errors->has('length'))
                                     <span class="invalid-feedback" role="alert">
@@ -52,7 +52,7 @@
                             <label for="released_date" class="col-md-3 col-form-label text-md-left">{{ __('Date of Release') }}</label>
 
                             <div class="col-md-6">
-                                <input id="released_date" type="text" class="form-control{{ $errors->has('released_date') ? ' is-invalid' : '' }}" name="released_date" value="{{ old('released_date') }}" placeholder="format: 2018/01/02"  autofocus>
+                                <input id="released_date" type="text" class="form-control{{ $errors->has('released_date') ? ' is-invalid' : '' }}" name="released_date" value="{{ old('released_date') }}" placeholder="format: 2018/01/02" required  autofocus>
 
                                 @if ($errors->has('released_date'))
                                     <span class="invalid-feedback" role="alert">
@@ -66,7 +66,7 @@
                             <label for="country" class="col-md-3 col-form-label text-md-left">{{ __('Country') }}</label>
 
                             <div class="col-md-6">
-                                <input id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ old('country') }}"  autofocus>
+                                <input id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ old('country') }}" required autofocus>
 
                                 @if ($errors->has('country'))
                                     <span class="invalid-feedback" role="alert">
@@ -81,7 +81,7 @@
                             <label for="director_name" class="col-md-3 col-form-label text-md-left">{{ __('Name of Director') }}</label>
 
                             <div class="col-md-6">
-                                <input id="director_name" type="text" class="form-control{{ $errors->has('director_name') ? ' is-invalid' : '' }}" name="director_name" value="{{ old('director_name') }}"  autofocus>
+                                <input id="director_name" type="text" class="form-control{{ $errors->has('director_name') ? ' is-invalid' : '' }}" name="director_name" value="{{ old('director_name') }}" required autofocus>
 
                                 @if ($errors->has('director_name'))
                                     <span class="invalid-feedback" role="alert">
@@ -109,7 +109,7 @@
                             <label for="image" class="col-md-3 col-form-label text-md-left">{{ __('Upload Photo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" value="{{ old('image') }}"  autofocus>
+                                <input id="image" type="file" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" value="{{ old('image') }}" required autofocus>
 
                                 @if ($errors->has('image'))
                                     <span class="invalid-feedback" role="alert">
@@ -128,20 +128,20 @@
                            
                                 <input type="hidden"  name="ozone_id" value="1">
 
-                                <h4><label for="showtime" class="col-form-label"><span class="badge badge-pill badge-success">{{ __('Ozone Cinema') }}</span></label></h4>
+                                <h4><label for="showtime" class="col-form-label"><span class="badge badge-pill badge-primary">{{ __('Ozone Cinema') }}</span></label></h4>
                                 <div class="row col-md-12 offset-md-2">
-                                    <p>Show Date: <input id="ozone_show_date" type="date" class="col-md-5 col-form-label {{ $errors->has('ozone_show_date') ? ' is-invalid' : '' }}" name="ozone_show_date" value="{{ old('ozone_show_date') }}"  autofocus></p>
-                                    <p>Show Time: <input type="text" class="col-md-5 col-form-label  {{ $errors->has('ozone_show_time') ? ' is-invalid' : '' }}" name="ozone_show_time" value="{{ old('ozone_show_time') }}"  autofocus></p>
+                                    <p>Show Date: <input id="ozone_show_date" type="date" class="col-md-5 col-form-label {{ $errors->has('ozone_show_date') ? ' is-invalid' : '' }}" name="ozone_show_date" value="{{ old('ozone_show_date') }}"  required autofocus></p>
+                                    <p>Show Time: <input type="text" class="col-md-5 col-form-label  {{ $errors->has('ozone_show_time') ? ' is-invalid' : '' }}" name="ozone_show_time" value="{{ old('ozone_show_time') }}" required autofocus></p>
                                 </div>
                                 
-                                @if ($errors->has('filmhouse_show_date'))
+                                @if ($errors->has('ozone_show_date'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('filmhouse_show_date') }}</strong>
+                                        <strong>{{ $errors->first('ozone_show_date') }}</strong>
                                     </span>
                                 @endif
-                                @if ($errors->has('filmhouse_show_time'))
+                                @if ($errors->has('ozone_show_time'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('filmhouse_show_time') }}</strong>
+                                        <strong>{{ $errors->first('ozone_show_time') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -152,10 +152,10 @@
                            
                                 <input type="hidden"  name="filmhouse_id" value="2">
 
-                                <h4><label for="showtime" class="col-form-label"><span class="badge badge-pill badge-success">{{ __('Filmhouse Cinema') }}</span></label></h4>
+                                <h4><label for="showtime" class="col-form-label"><span class="badge badge-pill badge-primary">{{ __('Filmhouse Cinema') }}</span></label></h4>
                                 <div class="row col-md-12 offset-md-2">
-                                    <p>Show Date: <input id="filmhouse_show_date" type="date" class="col-md-5 col-form-label {{ $errors->has('filmhouse_show_date') ? ' is-invalid' : '' }}" name="filmhouse_show_date" value="{{ old('filmhouse_show_date') }}"  autofocus></p>
-                                    <p>Show Time: <input type="text" class="col-md-5 col-form-label  {{ $errors->has('filmhouse_show_time') ? ' is-invalid' : '' }}" name="filmhouse_show_time" value="{{ old('filmhouse_show_time') }}"  autofocus></p>
+                                    <p>Show Date: <input id="filmhouse_show_date" type="date" class="col-md-5 col-form-label {{ $errors->has('filmhouse_show_date') ? ' is-invalid' : '' }}" name="filmhouse_show_date" value="{{ old('filmhouse_show_date') }}" required  autofocus></p>
+                                    <p>Show Time: <input type="text" class="col-md-5 col-form-label  {{ $errors->has('filmhouse_show_time') ? ' is-invalid' : '' }}" name="filmhouse_show_time" value="{{ old('filmhouse_show_time') }}" required  autofocus></p>
                                 </div>
                                 
                                 @if ($errors->has('filmhouse_show_date'))
@@ -176,10 +176,10 @@
                             <div class="col-md-12">
                                 <input type="hidden" name="ground_zero_id" value="3">
 
-                                <h4><label for="ground_zero_show_date" class="col-form-label"><span class="badge badge-pill badge-success">{{ __('Ground zero Cinema') }}</span></label></h4>
+                                <h4><label for="ground_zero_show_date" class="col-form-label"><span class="badge badge-pill badge-primary">{{ __('Ground zero Cinema') }}</span></label></h4>
                                 <div class="row col-md-12 offset-md-2">
-                                    <p>Show Date: <input id="ground_zero_show_date" type="date" class="col-md-5 col-form-label {{ $errors->has('ground_zero_show_date') ? ' is-invalid' : '' }}" name="ground_zero_show_date" value="{{ old('ground_zero_show_date') }}"  autofocus></p>
-                                    <p>Show Time: <input type="text" class="col-md-5 col-form-label  {{ $errors->has('ground_zero_show_time') ? ' is-invalid' : '' }}" name="ground_zero_show_time" value="{{ old('ground_zero_show_time') }}"  autofocus></p>
+                                    <p>Show Date: <input id="ground_zero_show_date" type="date" class="col-md-5 col-form-label {{ $errors->has('ground_zero_show_date') ? ' is-invalid' : '' }}" name="ground_zero_show_date" value="{{ old('ground_zero_show_date') }}" required autofocus></p>
+                                    <p>Show Time: <input type="text" class="col-md-5 col-form-label  {{ $errors->has('ground_zero_show_time') ? ' is-invalid' : '' }}" name="ground_zero_show_time" value="{{ old('ground_zero_show_time') }}" required autofocus></p>
                                 </div>
                                 
                                 @if ($errors->has('ground_zero_show_date'))
@@ -187,6 +187,7 @@
                                         <strong>{{ $errors->first('ground_zero_show_date') }}</strong>
                                     </span>
                                 @endif
+
                                 @if ($errors->has('ground_zero_show_time'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('ground_zero_show_time') }}</strong>

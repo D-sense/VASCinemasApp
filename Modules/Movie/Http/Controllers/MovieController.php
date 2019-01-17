@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Auth;
+use Validator;
 use Modules\Movie\Repositories\MoviesRepositoryInterface;
 
 class MovieController extends Controller
@@ -19,7 +20,7 @@ class MovieController extends Controller
             $this->movieRepository = $movieRepository;
             
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
         }  
    }
 
@@ -35,7 +36,7 @@ class MovieController extends Controller
             return view('movie::index', compact('movies'));
 
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
         }  
     }
 
@@ -49,7 +50,7 @@ class MovieController extends Controller
             return view('movie::create');
 
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
         }
     }
 
@@ -65,10 +66,15 @@ class MovieController extends Controller
             $request['user_id'] = Auth::user()->id;
             $this->movieRepository->store($request);
     
+            $validator = $this->validator($request, $this->rules);
+
+            if($validator->fails()){
+				return redirect(route('show_form_movie'))->withErrors($validator)->withInput();
+			}
             return redirect(route('show_all_movies'));
 
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
         }
     }
 
@@ -83,7 +89,36 @@ class MovieController extends Controller
             return view('movie::show', compact('movie'));
 
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
         }
     }
+
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    public static function validator(array $data, $rules)
+    {
+        return Validator::make($data, $rules);
+    }
+
+
+    private $rules = [
+        'image' => 'required|mimes:jpeg,png,jpg||max:2000',
+        'title' => 'required',
+        'length' => 'required|string',
+        'released_date' => 'required|date',
+        'country' => 'required',
+        'director_name' => 'required',
+        'description' => 'required',
+        'ozone_show_time' => 'required',
+        'ozone_show_date' => 'required|date',
+        'filmhouse_show_time' => 'required',
+        'filmhouse_show_date' => 'required|date',
+        'ground_zero_show_time' => 'required',
+        'ground_zero_show_date' => 'required|date',
+    ];
 }

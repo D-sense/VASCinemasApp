@@ -23,11 +23,11 @@
 
                                 <strong class="d-inline-block mb-2 text-success">{{$movie->title}}</strong>
 
-                                <div class="mb-1 text-muted small"><strong>Released on</strong> {{$movie->year}}</div>
+                                <div class="mb-1 text-muted small"><strong>Released on</strong> {{$movie->released_date}}</div>
                                 <p class="card-text mb-auto"><strong>Description</strong>: {{ $movie->description }}</p>
                                 <hr>
                                 <h6 class="mb-0">
-                                    <a class="text-dark" href="#"><strong>Showing in this cinema</strong>:  </a>
+                                    <a class="text-dark" href="#"><strong>Directed by: {{$movie->director_name}}</strong>:  </a>
                                 </h6>
 
                                 </div>

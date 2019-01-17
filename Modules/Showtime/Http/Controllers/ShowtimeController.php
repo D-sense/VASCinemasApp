@@ -18,7 +18,7 @@ class ShowtimeController extends Controller
             return view('showtime::index');
 
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
         }
     }
 
@@ -41,7 +41,7 @@ class ShowtimeController extends Controller
             return view('showtime::show');
 
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
         }
     }
 

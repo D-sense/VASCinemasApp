@@ -16,7 +16,7 @@ class ShowtimesRepository implements ShowtimesRepositoryInterface {
 			return Showtime::all();
 			
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
         }
 	}
 	
@@ -38,7 +38,7 @@ class ShowtimesRepository implements ShowtimesRepositoryInterface {
 			$showtime->save();
 			
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
 		}	
 	}
 
@@ -54,7 +54,7 @@ class ShowtimesRepository implements ShowtimesRepositoryInterface {
 			return Cinema::findOrFail($id);
 
         }catch(\Exception $error){
-            return Custom::returnResponseWithErrorMessage($error);
+            return $error;
 		}
 	}
 }

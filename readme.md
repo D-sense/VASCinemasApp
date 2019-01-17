@@ -5,6 +5,8 @@
 
 - Navigate to the cloned project and run "Composer update" to update dependencies.
 
+- Create an .env (with required values such as, DB_DATABASE, DB_USERNAME, DB_PASSWORD) file and and generate an app key. 
+
 - Run "composer dump-autoload" to get namespace working as expected.
 
 - Create a Database. For local development, I used "Cinemas". You may choose any name you like.

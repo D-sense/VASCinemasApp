@@ -13,12 +13,14 @@ class ShowtimesRepository implements ShowtimesRepositoryInterface {
 	
 	public function store(array $data)
 	{
-		$movie = new Showtime();
-		$image = request()->file('image');
-	
-		$movie->title = $data['title'];
+		$showtime = new Showtime();
+
+		$showtime->cinema_id = $data['cinema_id'];
+		$showtime->movie_id = $data['movie_id'];
+		$showtime->show_date = $data['show_date'];
+		$showtime->show_time = $data['show_time'];
 		
-		$movie->save();
+		$showtime->save();
 	}
 
 	public function show($id)

@@ -9,4 +9,12 @@ class Cinema extends Model
     protected $fillable = [
         'name', 'address'
     ];
+
+    public function showtime(){
+        return $this->hasMany(Showtime::class);
+    }
+
+    // public function movies(){
+    //     return $this->belongsTo(Movie::class);
+    // }
 }

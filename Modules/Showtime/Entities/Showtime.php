@@ -3,6 +3,7 @@
 namespace Modules\Showtime\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Modules\Movie\Entities\Movie;
 
 class Showtime extends Model
 {
@@ -15,7 +16,7 @@ class Showtime extends Model
     }
 
     public function movie(){
-        return $this->hasMany(Movie::class);
+        return $this->belongsTo(Movie::class);
     }
 
 }

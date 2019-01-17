@@ -61,9 +61,9 @@
                                     Cinemas
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Ozone</a>
-                                    <a class="dropdown-item" href="#">Filmhouse</a>
-                                    <a class="dropdown-item" href="#">Ground Zero</a>
+                                    <a class="dropdown-item" href="{{route('show_cinema', ['name' => 'Ozone'])}}">Ozone Cinema</a>
+                                    <a class="dropdown-item" href="{{route('show_cinema', ['name' => 'Filmhouse'])}}">Filmhouse Cinema</a>
+                                    <a class="dropdown-item" href="{{route('show_cinema', ['name' => 'Ground_zero'])}}">Ground Zero Cinema</a>
                                     </div>
                                 </li>
 
@@ -72,8 +72,8 @@
                                     Movies
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route('show_all_movies')}}">All movies</a>
-                                    <a class="dropdown-item" href="{{route('show_form_movie')}}">Add a movie</a>
+                                    <a class="dropdown-item" href="{{route('show_all_movies')}}">All Movies</a>
+                                    <a class="dropdown-item" href="{{route('show_form_movie')}}">Add a Movie</a>
                                     </div>
                                 </li>
 

@@ -17,7 +17,6 @@ class CinemaDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //$cinema = factory(Cinema::class, 1)->create();
         Model::unguard();
         $this->call(SeedCinemasTableSeeder::class);
     }

@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         
         Modules\Movie\Repositories\MovieServiceProvider::class,
+        Modules\Cinema\Repositories\CinemaServiceProvider::class,
+        Modules\Showtime\Repositories\ShowtimeServiceProvider::class,
 
     ],
 

@@ -15,12 +15,10 @@ class CreateShowtimesTable extends Migration
     {
         Schema::create('showtimes', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('cinema_id');
-            $table->foreign('cinema_id')->references('id')->on('cinemas');
-            $table->unsignedInteger('movie_id');
-            $table->foreign('movie_id')->references('id')->on('movies');
-            $table->integer('show_date');
-            $table->integer('show_time');
+            $table->integer('cinema_id');
+            $table->integer('movie_id');
+            $table->dateTime('show_date')->default(date('Y-m-d'));
+            $table->string('show_time');
             $table->timestamps();
         });
     }

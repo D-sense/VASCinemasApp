@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Auth;
-
 use Modules\Movie\Repositories\MoviesRepositoryInterface;
 
 class MovieController extends Controller
@@ -47,7 +46,6 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         $request = $request->all();
-        return $request;
         $request['user_id'] = Auth::user()->id;
         $this->movieRepository->store($request);
 

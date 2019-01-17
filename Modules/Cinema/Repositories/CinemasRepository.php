@@ -2,43 +2,22 @@
 namespace Modules\Cinema\Repositories;
 
 use Modules\Cinema\Entities\Cinema;
-use Auth;
+use Modules\Movie\Entities\Movie;
+use Modules\Showtime\Entities\Showtime;
 
 class CinemasRepository implements CinemasRepositoryInterface {
 	
-	public function index()
+	public function show($name)
 	{
-		return Cinema::all();
-	}
-	
-	// public function store(array $data)
-	// {
-	// 	$cinema = new Cinema();
-	// 	$cinema->name = $data['name'];
-	// 	$cinema->address = "Lagos";
-	// 	$cinema->save();
-	// }
-
-
-	public function show($id)
-	{
-		return Cinema::findOrFail($id);
+		$id = $this->getID($name);
+		$showtime = Showtime::where('cinema_id', $id)->get();
+		$showtime->load('movie');
+		return $showtime;
 	}
 
-	//  /**
-    //  * Upload an image to the Database.
-    //  *
-    //  * @return path of the image
-    //  */
+	private function getID($name){
+		$result = Cinema::where('name', $name)->first();
+		return $result->id;
+	}
 
-    // public function uploadImage($image){
-    //     $current_user =  new Auth();
-    //     $path = "";
-    //     if($image){
-    //         $name = $image->getClientOriginalName();
-    //         $protectedName = $current_user::User()->username ."_".$name;
-    //         $path = $image->storeAs('public/MovieImageCovers', $protectedName);
-    //     }     
-    //     return $path; 
-    // }
 }

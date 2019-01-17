@@ -16,6 +16,8 @@ class SeedCinemasTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('cinemas')->truncate();
+
         DB::table('cinemas')->insert([
             'name' => 'Ozone',
             'address' => "No 3. Festac town. Mainland. Lagos",
@@ -31,7 +33,7 @@ class SeedCinemasTableSeeder extends Seeder
         ]);
 
         DB::table('cinemas')->insert([
-            'name' => 'Ground Zero',
+            'name' => 'Ground_zero',
             'address' => "No 12. Admiralty way. VI. Lagos",
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),

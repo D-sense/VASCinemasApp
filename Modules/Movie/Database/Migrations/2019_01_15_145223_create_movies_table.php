@@ -17,13 +17,12 @@ class CreateMoviesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('length');
-            $table->dateTime('year');
+            $table->dateTime('released_date')->default(date('Y-m-d'));
             $table->string('country');
             $table->string('director_name');
             $table->longText('image');
             $table->longText('description');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

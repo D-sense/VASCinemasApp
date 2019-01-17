@@ -17,6 +17,8 @@
 
 - Run "php artisan module:seed Cinema". 
 
+- Run "php artisan storage:link" to resolve our uploaded images' path. 
+
 - It is time to run our app. Run "php artisan serve", then go to your localhost (example: "http://127.0.0.1:8000").
 
 The app runs so reliably on my system. Thank you :)

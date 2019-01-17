@@ -1,18 +1,19 @@
 <?php
 namespace App\Helpers;
 use Validator;
+use Modules\Cinema\Entities\Cinema;
 
 class Custom {
 
-
+  /**
+   * Get an exception 
+   *
+   * @param  Exception  $error
+   * @return Exception 
+   */
   public static function returnResponseWithErrorMessage($error)
   {
-    return response()->json([
-      'status_code' => 500,
-      'body' => [
-        'message' => $error->getMessage()
-      ]
-    ], 500);
+    return $error->getMessage();
   }
 
 
@@ -25,6 +26,19 @@ class Custom {
   public static function validator(array $data, $rules)
   {
     return Validator::make($data, $rules);
+  }
+
+
+  /**
+   * Get Cinema name.
+   *
+   * @param  $id
+   * @return string $result->name
+   */
+  public static function getCinemaName($id)
+  {
+    $result = Cinema::FindOrFail($id);
+    return $result->name;
   }
 
   

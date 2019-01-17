@@ -14,51 +14,76 @@ class MovieController extends Controller
 
    public function __construct(MoviesRepositoryInterface $movieRepository)
    {
-      $this->middleware('auth');
-      $this->movieRepository = $movieRepository;
+        try{
+            $this->middleware('auth');
+            $this->movieRepository = $movieRepository;
+            
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }  
    }
 
 
     /**
      * Display a listing of the resource.
-     * @return Response
+     * @return View
      */
     public function index()
     {
-        $movies = $this->movieRepository->index();
-        return view('movie::index', compact('movies'));
+        try{
+            $movies = $this->movieRepository->index();
+            return view('movie::index', compact('movies'));
+
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }  
     }
 
     /**
      * Show the form for creating a new resource.
-     * @return Response
+     * @return View
      */
     public function create()
     {
-        return view('movie::create');
+        try{
+            return view('movie::create');
+
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      * @param  Request $request
-     * @return Response
+     * @return View
      */
     public function store(Request $request)
     {
-        $request = $request->all();
-        $request['user_id'] = Auth::user()->id;
-        $this->movieRepository->store($request);
+        try{
+            $request = $request->all();
+            $request['user_id'] = Auth::user()->id;
+            $this->movieRepository->store($request);
+    
+            return redirect(route('show_all_movies'));
 
-        return redirect(route('show_all_movies'));
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }
     }
 
     /**
      * Show the specified resource.
-     * @return Response
+     * @return View
      */
     public function show($id)
     {
-        $movie = $this->movieRepository->show($id);
-        return view('movie::show', compact('movie'));
+        try{
+            $movie = $this->movieRepository->show($id);
+            return view('movie::show', compact('movie'));
+
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }
     }
 }

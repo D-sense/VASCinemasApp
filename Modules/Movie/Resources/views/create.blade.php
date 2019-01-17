@@ -195,9 +195,7 @@
                             </div>
                         </div>
 
-                            <!-- </div>
-                        </div>
-                         -->
+                
                         <hr>
                         
                         <div class="form-group row mb-0">

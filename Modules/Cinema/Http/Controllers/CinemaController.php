@@ -11,33 +11,48 @@ use Modules\Cinema\Repositories\CinemasRepositoryInterface;
 
 class CinemaController extends Controller
 {
-    protected $cinemaRepository;
+   protected $cinemaRepository;
 
    public function __construct(CinemasRepositoryInterface $cinemaRepository)
    {
-      $this->middleware('auth');
-      $this->cinemaRepository = $cinemaRepository;
+        try{
+            $this->middleware('auth');
+            $this->cinemaRepository = $cinemaRepository;
+            
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }
    }
 
     /**
      * Display a listing of the resource.
-     * @return Response
+     * @return View
      */
     public function index()
     {
-        $cinemas = $this->cinemaRepository->index();
-        return view('cinema::index', compact('cinemas'));
+        try{
+            $cinemas = $this->cinemaRepository->index();
+            return view('cinema::index', compact('cinemas'));
+
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }
     }
 
 
     /**
      * Show the specified resource.
-     * @return Response
+     * @return View
      */
     public function show($name)
     {
-        $cinema = $this->cinemaRepository->show($name);
-        return view('cinema::show', compact('cinema'));
+        try{
+            $cinema = $this->cinemaRepository->show($name);
+            return view('cinema::show', compact('cinema'));
+
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }
     }
 
 }

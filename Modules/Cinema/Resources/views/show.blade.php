@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{$cinema[0]->cinema_id}} Cinema </div>
+                <div class="card-header">{{Custom::getCinemaName($cinema[0]->cinema_id)}} Cinema </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -34,7 +34,7 @@
                                     <hr>
 
                                     <div>
-                                        <p class="card-text mb-auto">{{str_limit($showtime->movie->description, $limit = 130, $end = '...') }}</p>
+                                        <p class="card-text mb-auto">Description: <strong> {{str_limit($showtime->movie->description, $limit = 130, $end = '...') }} </strong></p>
                                     </div>
                                     <hr>
 

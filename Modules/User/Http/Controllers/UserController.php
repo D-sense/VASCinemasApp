@@ -24,7 +24,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user::home');
+        try{
+            return view('user::home');
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }
     }
 
     /**
@@ -33,7 +37,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user::create');
+        try{
+            return view('user::create');
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }
     }
 
     /**
@@ -51,7 +59,12 @@ class UserController extends Controller
      */
     public function show()
     {
-        return view('user::show');
+        try{
+            return view('user::show');
+
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }
     }
 
   

@@ -7,6 +7,11 @@ use Modules\Showtime\Entities\Showtime;
 
 class CinemasRepository implements CinemasRepositoryInterface {
 	
+	 /**
+     * Get a listing of the resource.
+	 * @param string $name
+     * @return $showtime
+     */
 	public function show($name)
 	{
 		$id = $this->getID($name);
@@ -15,6 +20,10 @@ class CinemasRepository implements CinemasRepositoryInterface {
 		return $showtime;
 	}
 
+	/**
+     * Get an id of a resource.
+     * @return $result->id
+     */
 	private function getID($name){
 		$result = Cinema::where('name', $name)->first();
 		return $result->id;

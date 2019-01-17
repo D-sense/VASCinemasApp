@@ -14,7 +14,12 @@ class ShowtimeController extends Controller
      */
     public function index()
     {
-        return view('showtime::index');
+        try{
+            return view('showtime::index');
+
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }
     }
 
     /**
@@ -32,7 +37,12 @@ class ShowtimeController extends Controller
      */
     public function show()
     {
-        return view('showtime::show');
+        try{
+            return view('showtime::show');
+
+        }catch(\Exception $error){
+            return Custom::returnResponseWithErrorMessage($error);
+        }
     }
 
     
